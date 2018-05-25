@@ -20,30 +20,24 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.Switch;
 import android.widget.Toast;
 
 import com.alibaba.fastjson.JSONArray;
 import com.google.gson.Gson;
 
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import io.realm.Realm;
-import io.realm.RealmModel;
 import io.realm.RealmResults;
 import okhttp3.Call;
 import okhttp3.Callback;
-import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity
@@ -52,7 +46,7 @@ public class MainActivity extends AppCompatActivity
     //数据库操作
     private Realm mrealm;
     //网络连接
-    private String BaseURL = "http://10.7.84.118:8080/app/";
+    private String BaseURL = "http://10.7.84.109:8080/app/";
     private OkHttpClient okHttpClient;
     private static final String TAG = "OkHttpClient";
 
@@ -65,6 +59,18 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0);
+        ImageView imageView = headerView.findViewById(R.id.imageView);
+        Log.e("fuck",imageView.toString());
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,LoginActivity.class));
+            }
+        });
+
 
         //创建OKhttpclient对象
         okHttpClient = new OkHttpClient();
@@ -83,7 +89,7 @@ public class MainActivity extends AppCompatActivity
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
 
-        NavigationView navigationView = findViewById(R.id.nav_view);
+      //  NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         BottomNavigationViewHelper.disableShiftMode(navigation);//取消导航栏图标移动
 
@@ -338,20 +344,7 @@ public class MainActivity extends AppCompatActivity
             public void onFailure(Call call, IOException e) {
                 Log.e(TAG,"error");
 //                e.printStackTrace();
-                //同步操作：findAll查询
-                mrealm = UIUtils.getRealmInstance();
-//                RealmResults<Message> messagesList = mrealm.where(Message.class)
-//                        .findAll();
-                RealmResults<Message> messagesList = mrealm.where(Message.class)
-                        .findAllAsync();
-                messagesList.load();
-                if(messagesList != null && messagesList.isLoaded()) {
-                    for (int i = 0; i < messagesList.size(); i++) {
-                        dataList.add(messagesList.get(i));
-                    }
-                }else {
-                    Log.e(TAG,"errormessage");
-                }
+                findAllMesaage();
             }
 
             @Override
@@ -375,6 +368,21 @@ public class MainActivity extends AppCompatActivity
 
             }
         });
+
+
         return dataList;
     }
+
+    private List<Message> findAllMesaage(){
+        List<Message> dataList = new ArrayList<>();
+        mrealm = UIUtils.getRealmInstance();
+        RealmResults<Message> messages = mrealm.where(Message.class).findAll();
+        for (int i = 0 ; i< messages.size(); i++){
+            Message message = messages.get(i);
+            dataList.add(message);
+            Log.e("dataList",dataList.toString());
+        }
+        return dataList;
+    }
+
 }

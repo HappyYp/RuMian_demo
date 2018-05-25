@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/RuMian.iml" filepath="$PROJECT_DIR$/RuMian.iml" />
+      <module fileurl="file://F:\GitHubWork\RuMian_demo\RuMian.iml" filepath="F:\GitHubWork\RuMian_demo\RuMian.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RuMian_demo.iml" filepath="$PROJECT_DIR$/RuMian_demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/mysettingclass/mysettingclass.iml" filepath="$PROJECT_DIR$/mysettingclass/mysettingclass.iml" />
     </modules>

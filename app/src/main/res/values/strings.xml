@@ -83,4 +83,26 @@
     <string name="pref_ringtone_silent">静默</string>
 
     <string name="pref_title_vibrate">震动</string>
+
+    <string name="login_success">login success</string>
+    <string name="login">LOGIN</string>
+    <string name="Username">Username</string>
+    <string name="Password">Password</string>
+    <string name="forgot_your_password">Forgot your password ?</string>
+    <string name="go">GO</string>
+    <string name="repeat_password">Repeat Password</string>
+    <!--<string name="next">NEXT</string>-->
+    <string name="register">REGISTER</string>
+
+    <string name="title_activity_welcome">主屏幕</string>
+    <string name="next">下一页</string>
+    <string name="skip">上一页</string>
+    <string name="start">开始</string>
+
+    <string name="slide_1_title">Lonely</string>
+    <string name="slide_2_title">Meet</string>
+    <string name="slide_3_title">Fall in love at first sight</string>
+    <string name="slide_4_title">Both fall in love</string>
+    <string name="slide_5_title">Together forever</string>
+
 </resources>

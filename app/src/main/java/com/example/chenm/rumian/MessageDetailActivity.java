@@ -18,7 +18,7 @@ import java.util.zip.Inflater;
 
 public class MessageDetailActivity extends AppCompatActivity {
     private int likeCheck = 0;
-    private  String BaseURL = "http://10.7.84.118:8080/";
+    private  String BaseURL = "http://10.7.84.109:8080/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
