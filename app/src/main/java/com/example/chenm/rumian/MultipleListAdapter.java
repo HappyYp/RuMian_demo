@@ -18,7 +18,7 @@ import com.bumptech.glide.request.RequestOptions;
 import java.util.List;
 
 public class MultipleListAdapter extends BaseAdapter {
-    private  String BaseURL = "http://10.7.84.118:8080/";
+    private  String BaseURL = "http://10.7.84.109:8080/";
 
     private List<Message> messageList;
     private Activity activity;
